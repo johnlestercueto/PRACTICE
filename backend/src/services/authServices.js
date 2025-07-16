@@ -1,5 +1,6 @@
 const userRepository = require('../repositories/UserRepository')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const generateToken = require('../utils/generateToken');
 
 class AuthService {
 
@@ -17,11 +18,13 @@ class AuthService {
             name: data.name,
             email: data.email,
             password: hashedPassword,
-
+ 
         })
+        // token 
+        const token = generateToken(user)
 
         //Return successful register response
-        return user;
+        return {user, token}
 
     }
 
@@ -35,8 +38,11 @@ class AuthService {
         const isMatch = await bcrypt.compare(data.password, user.password)
         if(!isMatch) throw new Error('invalid credentials')
         
-        //Return successful login response
-        return user;
+        // token 
+        const token = generateToken(user)
+
+        //Return successful register response
+        return {user, token}
     }
 }
 

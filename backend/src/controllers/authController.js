@@ -1,12 +1,17 @@
 const authServices = require('../services/authServices')
-const { validationResult } = require("express-validator");
+
 
 exports.registerUser = async (req, res) => {
     try {
 
-        const user = await authServices.register(req.body)
+        const {user, token} = await authServices.register(req.body)
 
-        res.status(201).json({message: 'sign up succesfully', data: user})
+        res.status(201).json({
+            message: 'sign up succesfully',
+            token, 
+            user
+            
+            })
 
     } catch (error) {
         res.status(500).json({ message: error.message });
