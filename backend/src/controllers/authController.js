@@ -10,7 +10,7 @@ exports.registerUser = async (req, res) => {
             message: 'sign up succesfully',
             token, 
             user
-            
+
             })
 
     } catch (error) {
@@ -21,9 +21,14 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     try {
 
-        const user = await authServices.login(req.body)
+        const {user, token } = await authServices.login(req.body)
 
-        res.status(201).json({message: 'log in succesfully', data: user})
+        res.status(201).json({
+            message: 'log in succesfully',
+            token,
+            user
+            
+            })
         
     } catch (error) {
         res.status(500).json({ message: error.message });

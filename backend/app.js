@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 
-const authRoutes = require('./src/routes/authRoute');
-
-
 //middleware
+const logger = require('./src/middlewares/logger')
+
+app.use(logger);
 app.use(express.json());
 
 
 //routes
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', require('./src/routes/authRoute'));
 
 
 module.exports = app;
