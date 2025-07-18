@@ -8,7 +8,7 @@ const validateRequest = require("../middlewares/validateRequest");
 const { registerValidation, loginValidation } = require("../validation/authValidation");
 
 router.post("/register", registerValidation, validateRequest, authController.registerUser);
-router.get("/login", loginValidation, validateRequest, authController.loginUser);
+router.post("/login", loginValidation, validateRequest, authController.loginUser);
 router.get('/profile', authMiddleware, (req, res) => {
   res.json({ message: 'Welcome to your profile', user: req.user });
 });
