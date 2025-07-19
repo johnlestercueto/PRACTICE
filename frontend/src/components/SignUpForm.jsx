@@ -1,4 +1,5 @@
 import useForm from "../hooks/useForm"
+import { Link } from 'react-router-dom';
 
 const SignUpForm = ({ onSubmit }) => {
     const { values, handleChange, resetForm} = useForm({
@@ -49,6 +50,9 @@ const SignUpForm = ({ onSubmit }) => {
              placeholder="password"
         />
         <button type="submit">SIGN UP</button>
+        <p>
+        You have an account? <Link to="/login">Log in here</Link>
+        </p>
 
     </form>
   )

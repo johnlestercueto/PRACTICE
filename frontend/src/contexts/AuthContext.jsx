@@ -31,7 +31,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (formData) => {
     try {
-      const data = await loginUser(formData);
+      console.log('🔍 Sending to backend:', formData); // ADD THIS
+
+    const data = await loginUser(formData);
+
+    console.log('✅ Backend responded with:', data); // ADD THIS
       setUser(data.user);
       setIsAuthenticated(true);
       localStorage.setItem('token', data.token);

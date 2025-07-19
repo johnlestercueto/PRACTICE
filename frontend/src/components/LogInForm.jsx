@@ -44,7 +44,7 @@ const LogInForm = ({ onSubmit }) => {
         Don't have an account? <Link to="/signup">Sign up here</Link>
         </p>
 
-    </form>
+    </form> 
   )
 }
 
