@@ -1,8 +1,11 @@
 import React from 'react'
+import AdminLayout from '../../layouts/AdminLayout'
 
-const AdminDashboard = () => {
+const AdminDashboard = () => { 
   return (
-    <div>this is AdminDash board page</div>
+    <>
+    
+    </>
   )
 }
 

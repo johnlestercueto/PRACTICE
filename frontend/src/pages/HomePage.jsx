@@ -1,12 +1,12 @@
 import React from 'react';
 
-import PublicLayout from '../layouts/PublicLayout';
+import UserLayout from '../layouts/UserLayout';
 
 const HomePage = () => {
     
   return ( 
     <>
-    <PublicLayout/>
+    <UserLayout/>
     </>
   )
 }

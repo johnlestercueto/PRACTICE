@@ -5,10 +5,8 @@ import { useEffect } from 'react';
 
 
 const LogInPage = () => {
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const navigate = useNavigate()
-
-  
 
     const handleLogIn = async (formData) => {
         try {
