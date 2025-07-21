@@ -1,7 +1,7 @@
 // src/layouts/AdminLayout.jsx
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import '../components/AdminLayout.css'; // make sure to create this
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import "../components/AdminLayout.css"; // make sure to create this
 
 const AdminLayout = () => {
   return (
@@ -9,8 +9,12 @@ const AdminLayout = () => {
       <aside className="sidebar">
         <div className="sidebar-title">Go Store Admin</div>
         <ul className="sidebar-links">
-          <li><Link to="/admin">🏠 Dashboard</Link></li>
-          <li><Link to="/admin/setting">⚙️ Settings</Link></li>
+          <li>
+            <Link to="/addproduct"> ADD PRODUCT</Link>
+          </li>
+          <li>
+            <Link to="/admin/setting">⚙️ Settings</Link>
+          </li>
         </ul>
       </aside>
 

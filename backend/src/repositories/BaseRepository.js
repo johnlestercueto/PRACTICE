@@ -4,7 +4,7 @@ class BaseRepository {
     }
 
     async findAll() {
-        return this.model.find();
+        return this.model.find(); 
     }
 
     async findById(id) {

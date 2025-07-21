@@ -5,11 +5,11 @@ function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, files } = e.target;
 
     setValues((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === 'file' ? files[0] : value,
     }));
   };
 

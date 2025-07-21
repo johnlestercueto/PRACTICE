@@ -1,32 +1,26 @@
-import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import LogInForm from '../components/LogInForm';
-import { useEffect } from 'react';
-
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import LogInForm from "../components/LogInForm";
 
 const LogInPage = () => {
-    const { login, user } = useAuth();
-    const navigate = useNavigate()
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-    const handleLogIn = async (formData) => {
-        try {
-            const data = await login(formData);
+  const handleLogIn = async (formData) => {
+    try {
+      const data = await login(formData);
 
-      if (data.user.role === 'admin') {
-        navigate('/admin');
-      } else if (data.user.role === 'user') {
-        navigate('/');
-      } 
-
+      if (data.user.role === "admin") {
+        navigate("/admin");
+      } else if (data.user.role === "user") {
+        navigate("/");
+      }
     } catch (error) {
-            alert(error.message || 'Login failed.');
-            }
+      alert(error.message || "Login failed.");
     }
+  };
 
-  return (
-    <LogInForm onSubmit={handleLogIn} />
-  
-  )
-}
+  return <LogInForm onSubmit={handleLogIn} />;
+};
 
-export default LogInPage
+export default LogInPage;

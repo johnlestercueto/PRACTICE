@@ -27,7 +27,7 @@ class AuthService {
         return {user, token}
 
     }
-
+ 
     async login(data) {
 
         //  Hanapin ang user sa database

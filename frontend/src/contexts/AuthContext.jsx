@@ -1,7 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { loginUser, registerUser } from '../services/authServices';
-import { jwtDecode } from 'jwt-decode'; // ✅ Tama ito
-
+import { createContext, useContext, useState, useEffect } from "react";
+import { loginUser, registerUser } from "../services/authServices";
 
 const AuthContext = createContext();
 
@@ -11,35 +9,33 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // ✅ new state
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
+    const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("user");
 
     if (token && userData) {
-    try {
-      setUser(JSON.parse(userData)); // load full user
-      setIsAuthenticated(true);
-    } catch (err) {
-      console.error("Error loading user from storage");
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      try {
+        setUser(JSON.parse(userData)); // load full user
+        setIsAuthenticated(true);
+      } catch (err) {
+        console.error("Error loading user from storage");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
     }
-  }
-  setLoading(false);
-
-
+    setLoading(false);
   }, []);
 
   const login = async (formData) => {
     try {
-      console.log('🔍 Sending to backend:', formData); // ADD THIS
+      console.log("🔍 Sending to backend:", formData); // ADD THIS
 
-    const data = await loginUser(formData);
+      const data = await loginUser(formData);
 
-    console.log('✅ Backend responded with:', data); // ADD THIS
+      console.log("✅ Backend responded with:", data); // ADD THIS
       setUser(data.user);
       setIsAuthenticated(true);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user)); 
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
       return data;
     } catch (err) {
       return false;
@@ -52,13 +48,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setUser(null);
     setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated, loading }}>
+    <AuthContext.Provider
+      value={{ user, login, register, logout, isAuthenticated, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
